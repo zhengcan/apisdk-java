@@ -2,13 +2,14 @@ package com.github.zhengcan.apisdk.demo.def;
 
 import com.github.zhengcan.apisdk.ApiFactory;
 import com.github.zhengcan.apisdk.ApiFactoryBuilder;
-import com.github.zhengcan.apisdk.build.ApiServiceBuildContext;
-import com.github.zhengcan.apisdk.build.DefaultCodeGenerator;
-import com.github.zhengcan.apisdk.demo.def.DemoApi;
-import com.github.zhengcan.apisdk.demo.def.Post;
-import com.github.zhengcan.apisdk.demo.def.UserModule;
+import com.github.zhengcan.apisdk.build.ApiServiceBuilder;
+import com.github.zhengcan.apisdk.build.ClassGenerator;
+import com.github.zhengcan.apisdk.build.DefaultClassGenerator;
 import com.google.gson.Gson;
+import javassist.ClassPool;
 import org.junit.Test;
+
+import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -18,14 +19,21 @@ public class DemoApiTest {
   public void testGenerate() throws Exception {
     ApiFactoryBuilder builder = ApiFactoryBuilder.newInstance();
     ApiFactory factory = builder.build();
-    ApiServiceBuildContext<DemoApi> buildContext = factory.createApiServiceBuildContext(DemoApi.class);
-    DefaultCodeGenerator<DemoApi> generator = new DefaultCodeGenerator<>(buildContext);
-    System.out.println("!!!!!!!!!!!!");
-    Class<? extends DemoApi> apiImplClass = generator.generate();
+    ApiServiceBuilder<DemoApi> serviceBuilder = factory.createApiServiceBuilder(DemoApi.class);
+
+    ClassPool classPool = ClassPool.getDefault();
+    Class<? extends DemoApi> apiImplClass = serviceBuilder.buildClass(classPool);
     System.out.println("############");
     System.out.println(apiImplClass);
+
     DemoApi demoApi = apiImplClass.getConstructor().newInstance();
-    System.out.println(demoApi);
+    System.out.println("\t" + demoApi);
+
+    for (Field field : apiImplClass.getFields()) {
+      System.out.println(field);
+      System.out.println("\t" + field.get(demoApi));
+    }
+
     Post post = demoApi.getPost(1L);
     System.out.println(post);
   }

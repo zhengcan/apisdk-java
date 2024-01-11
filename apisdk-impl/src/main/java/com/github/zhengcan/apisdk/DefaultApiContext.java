@@ -46,4 +46,13 @@ public class DefaultApiContext<T> implements ApiContext<T> {
   public <R> CompletionStage<R> executeAsync() {
     return null;
   }
+
+  public void setHttpMethod(String httpMethod) {
+  }
+
+  public void setRawPath(String rawPath) {
+  }
+
+  public void setPath(String path) {
+  }
 }

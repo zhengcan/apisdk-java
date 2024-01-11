@@ -45,6 +45,7 @@ dependencies {
     api 'jakarta.validation:jakarta.validation-api:3.0.2'
     api 'com.google.code.gson:gson:2.10.1'
     api 'org.apache.commons:commons-lang3:3.14.0'
+    api 'commons-codec:commons-codec:1.16.0'
     api 'jakarta.ws.rs:jakarta.ws.rs-api:3.1.0'
 //    api 'com.google.guava:guava:33.0.0-jre'
     api 'org.asynchttpclient:async-http-client:3.0.0.Beta3'

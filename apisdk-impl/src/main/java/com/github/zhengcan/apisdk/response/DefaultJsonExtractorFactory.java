@@ -10,7 +10,6 @@ import com.google.gson.JsonParser;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.util.ServiceLoader;
 
 public class DefaultJsonExtractorFactory extends DefaultHttpExtractor implements JsonExtractor.Factory {
   private Class<?> targetClass;

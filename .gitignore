@@ -14,3 +14,4 @@ project/metals.sbt
 
 # Ignore Gradle build output directory
 */build
+*/bin

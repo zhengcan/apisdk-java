@@ -26,12 +26,6 @@ compileJava {
     options.release = 11
 }
 
-configurations {
-    all {
-        attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
-    }
-}
-
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13.1'

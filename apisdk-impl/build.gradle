@@ -26,12 +26,6 @@ compileJava {
     options.release = 11
 }
 
-configurations {
-    all {
-        attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
-    }
-}
-
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13.1'
@@ -47,7 +41,7 @@ dependencies {
     api 'org.apache.commons:commons-lang3:3.14.0'
     api 'commons-codec:commons-codec:1.16.0'
     api 'jakarta.ws.rs:jakarta.ws.rs-api:3.1.0'
-//    api 'com.google.guava:guava:33.0.0-jre'
+    api 'com.google.guava:guava:33.0.0-jre'
     api 'org.asynchttpclient:async-http-client:3.0.0.Beta3'
     api 'org.javassist:javassist:3.30.0-GA'
     api 'org.slf4j:slf4j-api:2.0.10'
